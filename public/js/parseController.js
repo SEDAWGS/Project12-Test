@@ -33,6 +33,24 @@ app.controller('parseCtrl', ['$scope', '$modal', function($scope, $modal) {
 			$scope.sublets.push(sublet); //Do not query again, just append
 		});
 	};
+
+	$scope.delete = function(sublet) {
+		query.get(sublet.objectId, {
+			success: function(sub) {
+				sub.destroy ({
+					success: function(s) {
+						//remove sublet from $scope.sublets
+					},
+					error: function(s, error) {
+						alert('Error: ' + error.code + ' ' + error.message);
+					}
+				});
+			},
+			error: function(object, error) {
+				alert('Error: ' + error.code + ' ' + error.message);
+			}
+		});
+	};
 }]);
 
 app.controller('newSubletCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
