@@ -18,6 +18,7 @@
 						<td><b>Price</b></td>
 						<td><b>Details</b></td>
 						<td><b>Image</b></td>
+						<td><b>Action</b></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +27,9 @@
 						<td>{{sub.Price}}</td>
 						<td>{{sub.Details}}</td>
 						<td>{{sub.Image}}</td>
+						<td>
+							<button class="btn btn-danger" ng-click="delete(sub)">Delete</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
