@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var configDB = require('./config/database.js');
 
-mongoose.connect(configDB.url);
+mongoose.connect(process.env.MONGOHQ_URL || configDB.url);
 
 // log every request to the console
 app.use(morgan('dev'));
