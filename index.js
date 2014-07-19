@@ -25,11 +25,6 @@ var callback = function(err, db) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(session({
-      resave: false,
-      saveUninitialized: false,
-      secret: 'keyboard cat'
-    }));
 
     var router = express.Router();
     require('./app/routes.js')(router, requestHandlers, db);
