@@ -1,5 +1,6 @@
 module.exports = function(router, requestHandlers) {
   var userRequestHandlers = requestHandlers.users;
+  var inboxRequestHandlers = userRequestHandlers.inboxRequestHandlers;
   var subletRequestHandlers = requestHandlers.sublets;
 
   router.route('/users')
@@ -10,6 +11,14 @@ module.exports = function(router, requestHandlers) {
   .get(userRequestHandlers.getUser)
   .put(userRequestHandlers.putUser)
   .delete(userRequestHandlers.deleteUser);
+
+  router.route('/users/:user_id/inbox')
+  .get(inboxRequestHandlers.getInbox);
+
+  router.route('/users/:user_id/inbox/:recipient_id')
+  .get(inboxRequestHandlers.getConversation)
+  .post(inboxRequestHandlers.postMessage)
+  .delete(inboxRequestHandlers.deleteConversation);
 
   router.route('/sublets')
   .get(subletRequestHandlers.getSublets)
