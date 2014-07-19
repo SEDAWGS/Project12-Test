@@ -36,8 +36,12 @@ API
 
 #### /sublets
 - GET /sublets
-  - searches and returns sublets with filters
-- GET /sublets/:id
-  - gets a sublet by its ID
+  - searches and returns sublet listings with filters
 - POST /sublets
-  - post a sublet
+  - post a sublet listing
+- GET /sublets/:id
+  - gets a sublet listing by its ID
+- PUT /sublets/:id
+  - edit a sublet listing
+- DELETE /sublets/:id
+  - delete a sublet listing
