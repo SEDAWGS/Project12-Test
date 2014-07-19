@@ -11,10 +11,12 @@ Data Model
   - Email
   - Inbox
   - Sublets
+  - Unique ID
 - Sublet Listing
   - Address
   - Price
   - Details
+  - Unique ID
 
 API
 - 
