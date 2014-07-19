@@ -3,7 +3,7 @@ var path = require('path');
 var app = express();
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
-var session = require('express-session');
+//var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
@@ -19,11 +19,12 @@ app.engine('html', require('ejs').renderFile);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  resave: false,
-  saveUninitialized: false,
-  secret: 'keyboard cat'
-}));
+//unused
+// app.use(session({
+//   resave: false,
+//   saveUninitialized: false,
+//   secret: 'keyboard cat'
+// }));
 
 require('./app/routes.js')(app);
 
