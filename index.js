@@ -13,7 +13,17 @@ mongoose.connect(configDB.url);
 // log every request to the console
 app.use(morgan('dev'));
 
-app.use(bodyParser());
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.use(logfmt.requestLogger());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: 'keyboard cat'
+}));
 
 require('./app/routes.js')(app);
 
