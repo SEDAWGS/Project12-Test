@@ -63,11 +63,9 @@ app.controller('newSubletCtrl', ['$scope', '$modalInstance', function($scope, $m
 		var parseFile = null;
 		if (imageUpload.files.length > 0) {
 			var img = imageUpload.files[0];
-			var name = 'photo.jpg';
+			var name = 'photo.jpg'; //ONLY WORKS WITH JPEGS FOR NOW
 			parseFile = new Parse.File(name, img);
-			parseFile.save().then(function() {
-
-			}, 
+			parseFile.save().then(function() { }, 
 			function(error) {
 				alert('Image could not be uploaded. Error: ' + error.code + ': ' + error.message);
 			});
@@ -78,7 +76,7 @@ app.controller('newSubletCtrl', ['$scope', '$modalInstance', function($scope, $m
 		sublet.set('Price', $scope.sublet.Price);
 		sublet.set('Details', $scope.sublet.Details);
 		sublet.set('Image', parseFile);
-		$scope.sublet.Image = parseFile;
+		$scope.sublet.Image = parseFile; //update Image
 		sublet.save(null, {
 			success: function(sublet) {
 				$modalInstance.close($scope.sublet); //close on succesful save
