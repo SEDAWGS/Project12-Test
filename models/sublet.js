@@ -5,7 +5,7 @@ var subletSchema = new Schema({
   address: String,
   price: Number,
   details: String,
-  id: Number
+  // id: Number
 });
 
 module.exports = mongoose.model('Sublet', subletSchema);

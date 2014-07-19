@@ -3,10 +3,9 @@ var Schema = mongoose.Schema;
 
 var conversationSchema = new Schema({
   messages: [{
-    id: Number,
-    body: String,
-    sender: Number
+    id: Number
   }]
 });
 
+conversationSchema.plugin(autoIncrement.plugin, 'Conversation');
 module.exports = mongoose.model('Conversation', conversationSchema);

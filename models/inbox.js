@@ -7,7 +7,7 @@ var inboxSchema = new Schema({
     id: Number,
     recipient: Number
   }],
-  id: Number
+  // id: Number
 });
 
 module.exports = mongoose.model('Inbox', inboxSchema);
