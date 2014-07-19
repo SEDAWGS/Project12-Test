@@ -28,19 +28,21 @@ API
   - searches users
 - POST /users
   - make a user
-- GET /users/:id
+- GET /users/:user_id
   - gets a user by his ID
-- PUT /users/:id
+- PUT /users/:user_id
   - modify a user
+- DELETE /users/:user_id
+  - delete a user
 
 #### /users/:id/inbox
-- GET /users/:id/inbox
+- GET /users/:user_id/inbox
   - get a user's inbox
-- GET /users/:id/inbox/:recipient_id
+- GET /users/:user_id/inbox/:recipient_id
   - get a threaded conversation
-- POST /users/:id/inbox/:recipient_id
+- POST /users/:user_id/inbox/:recipient_id
   - send a message
-- DELETE /users/:id/inbox/:recipient_id
+- DELETE /users/:user_id/inbox/:recipient_id
   - delete a threaded conversation
 
 #### /sublets
@@ -48,9 +50,9 @@ API
   - searches and returns sublet listings with filters
 - POST /sublets
   - post a sublet listing
-- GET /sublets/:id
+- GET /sublets/:sublet_id
   - gets a sublet listing by its ID
-- PUT /sublets/:id
+- PUT /sublets/:sublet_id
   - edit a sublet listing
-- DELETE /sublets/:id
+- DELETE /sublets/:sublet_id
   - delete a sublet listing
