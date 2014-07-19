@@ -1,4 +1,3 @@
-var User = require('../models/user');
 var db = require('mongoose-simpledb').db;
 
 exports.getUsers = function(req, res) {
