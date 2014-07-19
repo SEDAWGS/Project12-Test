@@ -1,8 +1,9 @@
 var express = require('express');
+var path = require('path');
 var app = express();
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
-
+var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
@@ -15,7 +16,6 @@ app.use(morgan('dev'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
-app.use(logfmt.requestLogger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
