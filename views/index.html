@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html ng-app='parseApp'>
-<html>
 	<head>
 		<title>Test App</title>
 		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css"></link>
 	</head>
-	<body ng-controller='parseController'>
+	<body ng-controller="parseCtrl">
+	<button class="btn btn-primary" ng-click="newSublet()" style="position: absolute; top: 10px; left: 10px; cursor: pointer;">Add Sublet</button>
 		<div class="jumbotron text-center">
   			<h1>Welcome to the Test App!</h1>
-  			<p>Let's edit some sublet data.<p>
+  			<p>Let's see some sublet data.</p>
 		</div>
-		<div class='container-fluid'>
-			<table>
+		<div class="container-fluid">
+			<table class="table table-striped table-bordered table-condensed" ng-show=" sublets.length > 0">
 				<thead>
-					<tr>Name
+					<tr>
+						<td><b>Address</b></td>
+						<td><b>Price</b></td>
+						<td><b>Details</b></td>
+						<td><b>Image</b></td>
+					</tr>
 				</thead>
+				<tbody>
+					<tr ng-repeat="sub in sublets">
+						<td>{{sub.Address}}</td>
+						<td>{{sub.Price}}</td>
+						<td>{{sub.Details}}</td>
+						<td>{{sub.Image}}</td>
+					</tr>
+				</tbody>
 			</table>
+			<div class="row-fluid" ng-hide="sublets.length > 0">
+				<p><b>No sublets found. Click <a href="" ng-click="newSublet()">here</a> to add a new sublet.</b></p>
+			</div>
 		</div>
-		<script src="resources/angular.min.js"></script>
-		<script src="js/parseController.js"></script>
+
+	    <script type="text/ng-template" id="new-sublet.html">
+	      <div class="modal-header">
+	        <h2 class="text-center">Add New Sublet</h2>
+	      </div>
+	      <div class="modal-body">
+			<form name="addForm" role="form">
+	          <div class="form-group">
+	            <label>Address: </label>
+	            <input class="form-control" type="text" placeholder="Address" ng-model="sublet.Address" required></input>
+	          </div>
+	          <div class="form-group">
+	            <label>Price: </label>
+	            <textarea class="form-control" type="text" placeholder="Price" ng-model="sublet.Price" required></textarea>
+	          </div>
+	          <div class="form-group">
+	            <label>Details: </label>
+	            <textarea class="form-control" type="text" placeholder="Details" ng-model="sublet.Details" required></textarea>
+	          </div>
+	      <div class="modal-footer">
+	        <button class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid">Save</button>
+	        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	      </div>
+	    </script>
+
+	    <script src="resources/angular.min.js"></script>		
   		<script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+		<script src="js/parseController.js"></script>
+  		<script src="resources/ui-bootstrap-tpls-0.11.0.min.js"></script>
+
 	</body>
 </html>
