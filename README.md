@@ -3,7 +3,6 @@ Project12
 
 12
 
-
 Data Model
 -
 - User
@@ -19,7 +18,7 @@ Data Model
   - Unique ID
 
 API
-- 
+-
 #### /users
 - GET /users
   - searches users
