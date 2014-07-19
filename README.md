@@ -7,10 +7,10 @@ Project12
 Data Model
 -
 - User
-- Name
-- Email
-- Inbox
-- Sublets
+  - Name
+  - Email
+  - Inbox
+  - Sublets
 
 API
 - 
