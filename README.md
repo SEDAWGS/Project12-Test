@@ -11,6 +11,10 @@ Data Model
   - Email
   - Inbox
   - Sublets
+- Sublet Listing
+  - Address
+  - Price
+  - Details
 
 API
 - 
