@@ -8,14 +8,18 @@ Data Model
 - User
   - Name
   - Email
-  - Inbox
-  - Sublets
   - Unique ID
 - Sublet Listing
   - Address
   - Price
   - Details
   - Unique ID
+- Inbox
+  - Owner
+  - Conversations: [{ Unique ID, Other user }]
+  - Unique ID
+- Inbox Conversation
+  - Messages: [{ Unique ID, Message body, Sender }]
 
 API
 -
