@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var requestHandlers = require('./app/requestHandlers');
 
 var configDB = require('./config/database.js');
 
@@ -25,7 +26,9 @@ app.use(session({
   secret: 'keyboard cat'
 }));
 
-require('./app/routes.js')(app);
+var router = express.Router();
+require('./app/routes.js')(router, requestHandlers);
+app.use('/api/v1', router);
 
 app.get('/', function(req, res) {
 	res.render ('index.html');
