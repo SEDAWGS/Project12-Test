@@ -26,7 +26,8 @@
 						<td>{{sub.Address}}</td>
 						<td>{{sub.Price}}</td>
 						<td>{{sub.Details}}</td>
-						<td>{{sub.Image}}</td>
+						<td ng-show="sub.Image.url != null"><img ng-src="{{sub.Image.url}}" style="width:100px; height:100px;"></td>
+						<td ng-hide="sub.Image.url != null">No image :(</td>
 						<td>
 							<button class="btn btn-danger" ng-click="delete(sub)">Delete</button>
 						</td>
@@ -56,6 +57,10 @@
 	            <label>Details: </label>
 	            <textarea class="form-control" type="text" placeholder="Details" ng-model="sublet.Details" required></textarea>
 	          </div>
+	          <div class="form-group">
+	          	<label>Image: </label>
+	          	<input class="form-control" type="file" id="imageUpload">
+	          </div>
 	      <div class="modal-footer">
 	        <button class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid">Save</button>
 	        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
@@ -65,7 +70,7 @@
 	    <script src="resources/angular.min.js"></script>		
   		<script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 		<script src="js/parseController.js"></script>
+		<script src="resources/jquery-2.1.1.min.js"></script>
   		<script src="resources/ui-bootstrap-tpls-0.11.0.min.js"></script>
-
 	</body>
 </html>

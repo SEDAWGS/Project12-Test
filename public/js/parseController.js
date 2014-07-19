@@ -18,7 +18,7 @@ app.controller('parseCtrl', ['$scope', '$modal', function($scope, $modal) {
 			}
 		},
 		error: function(error) {
-			alert('Error: ' + error.code + ' ' + error.message);
+			alert('Error: ' + error.code + ': ' + error.message);
 		}
 	});
 
@@ -43,12 +43,12 @@ app.controller('parseCtrl', ['$scope', '$modal', function($scope, $modal) {
 						$scope.$apply();
 					},
 					error: function(s, error) {
-						alert('Error: ' + error.code + ' ' + error.message);
+						alert('Error: ' + error.code + ': ' + error.message);
 					}
 				});
 			},
 			error: function(object, error) {
-				alert('Error: ' + error.code + ' ' + error.message);
+				alert('Error: ' + error.code + ': ' + error.message);
 			}
 		});
 	};
@@ -59,17 +59,32 @@ app.controller('newSubletCtrl', ['$scope', '$modalInstance', function($scope, $m
 	$scope.sublet = {};
 
 	$scope.save = function() {
+		var imageUpload = $('#imageUpload')[0];
+		var parseFile = null;
+		if (imageUpload.files.length > 0) {
+			var img = imageUpload.files[0];
+			var name = 'photo.jpg';
+			parseFile = new Parse.File(name, img);
+			parseFile.save().then(function() {
+
+			}, 
+			function(error) {
+				alert('Image could not be uploaded. Error: ' + error.code + ': ' + error.message);
+			});
+		}
 		//save Angular model as Parse Object
 		var sublet = new Sublet();
 		sublet.set('Address', $scope.sublet.Address);	
 		sublet.set('Price', $scope.sublet.Price);
 		sublet.set('Details', $scope.sublet.Details);
+		sublet.set('Image', parseFile);
+		$scope.sublet.Image = parseFile;
 		sublet.save(null, {
 			success: function(sublet) {
 				$modalInstance.close($scope.sublet); //close on succesful save
 			},
 			error: function(sublet, error) {
-				alert('Failed to create new object, with error code: ' + error.message);
+				alert('Failed to create new object, with error: ' + error.message);
 		  }
 		});
 	};
