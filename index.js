@@ -27,5 +27,10 @@ app.use(session({
 
 require('./app/routes.js')(app);
 
+app.get('/', function(req, res) {
+	res.render ('index.html');
+});
+
+
 app.listen(port);
 console.log('Server starting on port ' + port);
